@@ -7,7 +7,7 @@ class Poll(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     description = Column(String)
-    questions = relationship("Question", back_populates="poll")
+    questions = relationship("Question", back_populates="poll", cascade="all, delete-orphan")
 
 class Question(Base):
     __tablename__ = "questions"
@@ -16,7 +16,7 @@ class Question(Base):
     question_number = Column(Integer)
     text = Column(String)
     poll = relationship("Poll", back_populates="questions")
-    answers = relationship("Answer", back_populates="question")
+    answers = relationship("Answer", back_populates="question", cascade="all, delete-orphan")
 
 class Answer(Base):
     __tablename__ = 'answers'
