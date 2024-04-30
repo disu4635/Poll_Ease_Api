@@ -113,6 +113,7 @@ class AnswerService():
             return False
         answer.answer_number = data.answer_number
         answer.answer_text = data.answer_text
+        answer.votes = data.votes
         self.db.commit()
         return True
         
